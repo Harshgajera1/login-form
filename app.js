@@ -1,9 +1,13 @@
+require('dotenv').config()
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const passport = require('passport');
 const path = require('path');
 const app = express();
 const db  =require('./config/mongo');
+
+const PORT = process.env.PORT
+
 
 const localstrategy =  require('./config/passport-local');
 const session = require('express-session');
@@ -30,10 +34,10 @@ app.use('/upload',express.static(path.join(__dirname,'/upload')));
 
 app.use('/',require('./router/router'));
 
-app.listen(8000,(err)=>{
+app.listen(PORT,(err)=>{
     if(err){
         console.log('error server');
         return false;
     }
-    console.log('server start port no : 8000');
+    console.log(`server start port no : ${PORT}`);
 });

@@ -1,13 +1,14 @@
+require('dotenv').config()
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1/demobok');
+mongoose.connect(process.env.MONGO_URL);
 const db = mongoose.connection;
 
 db.on('error',console.error.bind(console,'db on error'));
 db.once('open',(err)=>{
     if(err){
-        console.log('db error');
+        console.log('MongoDB Disconnected');
         return false
     }
-    console.log('db is on.');
+    console.log('MongoDB Connected');
 });
 module.exports = db;
