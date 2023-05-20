@@ -1,0 +1,64 @@
+<h2><%=title%></h2>
+<h2><%=data%></h2>
+
+<form action="/editdata" method="post" enctype="multipart/form-data">
+    <table border="1">
+        <input type="hidden" name="id" value="<%=data.id%>">
+         <tr>
+            <td>Enter Book Name: </td>
+            <td><input type="text" name="name" value="<%=data.name%>"></td>
+        </tr>
+        <tr>
+            <td>Enter Author: </td>
+            <td><input type="text" name="auther" value="<%=data.auther%>"></td>
+        </tr>
+        <tr>
+             <td>Select Publisher: </td>
+            <td><input type="checkbox" name="publisher[]" value="Akashic" <% if(data.publisher.includes('Akashic')){%> <%= 'checked' %>  <%} %>>Akashic Books(Brooklyn,NY)&nbsp;&nbsp;
+                <input type="checkbox" name="publisher[]" value="Dzanc"  <% if(data.publisher.includes('Dzanc')){%> <%= 'checked' %>  <%} %>>Dzanc Books(Detroit,MI)&nbsp;&nbsp;
+                <input type="checkbox" name="publisher[]" value="Graywolf" <% if(data.publisher.includes('Graywolf')){%> <%= 'checked' %> <%} %> >Graywolf Press (Minneapolis)
+            </td>
+         </tr>
+         <% book = ['Inspiration','Horror','Thriller','Historical Fiction','Comic Book or Graphic Novel'] %>
+         <tr>
+            <td>BookCategory: </td>
+            <td><select name="category" >
+                <option>--Select BookCategory</option>
+                <% for(var i=0; i<book.length; i++){%> 
+                    <option value="<%=book[i]%>" <% if(data.category == book[i]){%> <%= 'selected' %> <%} %>><%=book[i]%></option>    
+                <%} %>
+            </select></td>
+         </tr>
+         <tr>
+             <td>Enter Pages: </td>
+             <td><input type="text" name="page" value="<%=data.page%>"></td>
+         </tr>
+         <tr>
+             <td>Description: </td>
+             <td><textarea name="description" cols="50" rows="3"><%=data.description%></textarea></td>
+         </tr>
+         <tr>
+             <td>FrontPage Image: </td>
+             <td><input type="file" name="img">
+                <img src="<%=data.avatar%>" height="100">
+            </td>
+         </tr>
+         <tr>
+             <td>Publishing Date: </td>
+             <td><input type="date" name="date" value="<%=data.date%>"></td>
+         </tr>
+         <% rating = ['1','2','3','4','5'] %>
+         <tr>
+             <td>Book Rating: </td>
+             <td>
+                <% for(var i=0; i<rating.length; i++){%>
+                    <input type="radio" name="rating" value="<%=rating[i]%>" <% if(data.rating== rating[i]){%> <%= 'checked' %> <%} %>><%=rating[i]%>&nbsp;&nbsp;
+                <%} %>
+            </td>
+         </tr>
+         <tr>
+             <td></td>
+             <td><input type="submit" name="submit" value="Update"></td>
+         </tr>
+        </table>
+    </form>

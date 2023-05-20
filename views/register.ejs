@@ -1,0 +1,35 @@
+<style>
+    td{
+        padding: 7px;
+    }
+</style>
+<h2>Registration Form</h2>
+
+
+<form action="/register/registerdata" method="post">
+    <table border="1">
+        <tr>
+            <td>Enter Username: </td>
+            <td><input type="text" name="username"></td>
+        </tr>
+        <tr>
+            <td>Enter Email: </td>
+            <td><input type="email" name="email"></td>
+        </tr>
+        <tr>
+            <td>Enter Password: </td>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td>Enter Confirm Password: </td>
+            <td><input type="password" name="cpassword"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Register"></td>
+        </tr>
+    </table>
+</form>
+
+<a href="/register/login">Login</a>
+<a href="/register/logout" style="margin-left:20px;">Logout</a>

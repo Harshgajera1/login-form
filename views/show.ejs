@@ -1,0 +1,36 @@
+<h2><%=title%></h2>
+<!-- <h2><%=locals.user%></h2> -->
+
+<table border="1">
+    <tr>
+        <td>Book Name</td>
+        <td>Auther Name</td>
+        <td>Publisher</td>
+        <td>Category</td>
+        <td>Pages</td>
+        <td>Description</td>
+        <td>Book Image</td>
+        <td>Publishing Date</td>
+        <td>Rating</td>
+        <td>Action</td>
+        <td>Update</td>
+    </tr>
+    <% for(var bookdata of data ){%>
+        <tr>
+            <td><%=bookdata.name%></td>
+            <td><%=bookdata.auther%></td>
+            <td><%=bookdata.publisher%></td>
+            <td><%=bookdata.category%></td>
+            <td><%=bookdata.page%></td>
+            <td><%=bookdata.description%></td>
+            <!-- <td><%=bookdata.avatar%></td> -->
+            <td><img src="<%=bookdata.avatar%>" height="100"></td>
+            <td><%=bookdata.date%></td>
+            <td><%=bookdata.rating%></td>
+            <td><a href="/deletedata/<%=bookdata.id%>">Delete</a></td>
+            <td><a href="/updatedata/?id=<%=bookdata.id%>">Update</a></td>
+        </tr>
+    <%} %>
+</table>
+
+<a href="/">Home Page</a>
