@@ -13,7 +13,7 @@ const localstrategy =  require('./config/passport-local');
 const session = require('express-session');
 
 app.set('view engine', 'ejs');
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
 app.use(session({
